@@ -1,11 +1,15 @@
 'use strict';
-require('./computeRootSize.min')
-var attachFastClick = require('fastclick');
-attachFastClick(document.body);
+var computeRootSize = require('./computeRootSize')
+var FastClick = require('fastclick');
+FastClick.attach(document.body);
 
 var plugin = {
-  exec: function () {
-
+  exec: function (options) {
+    computeRootSize(window, {
+      designWidth: options.designWidth || 640,
+      designHeight: options.designHeight || 1136,
+      designFontSize: options.designFontSize || 20
+    })
   }
 }
 

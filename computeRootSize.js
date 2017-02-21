@@ -11,7 +11,7 @@
  # xiaoweili@tencent.com
  # ps:请尽量第一时间运行此js计算字体
  */
-!function(win, option) {
+module.exports = function(win, option) {
     var count = 0,
         designWidth = option.designWidth,
         designHeight = option.designHeight || 0,
@@ -51,10 +51,4 @@
             self();
         }, 300);
     }, false);
-}(window, {
-    designWidth: 640,
-    designHeight: 1136,
-    designFontSize: 20,
-    callback: function (argument) {
-    }
-});
+};
