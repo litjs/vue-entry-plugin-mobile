@@ -12,7 +12,14 @@ npm install vue-entry-plugin-mobile --save-dev
 
 module.exports = {
   entry: vueEntry({
-    plugins:['mobile']
+    plugins:[{
+           name: 'mobile',
+           options: {
+             designWidth: 320,
+             designHeight: 568,
+             designFontSize: 17
+           }
+         }]
   })
 }
 ```
