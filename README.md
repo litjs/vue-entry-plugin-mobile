@@ -1,19 +1,18 @@
-# entry-hash-webpack-plugin
-A webpack plugin to add entry js to index.html
+# vue-entry-plugin-mobile
+A vue entry plugin for mobile app
 
 ## Installation
 ```
-npm install clean-webpack-plugin --save-dev
+npm install vue-entry-plugin-mobile --save-dev
 ```
 
 ## Example Webpack Config
 
 ``` javascript
-var entryHashWebpackPlugin = require('entry-hash-webpack-plugin');
 
 module.exports = {
-  plugins: [
-    new entryHashWebpackPlugin({isProduction:true, entryName:'__main_entry__'})
-  ]
+  entry: vueEntry({
+    plugins:['mobile']
+  })
 }
 ```
