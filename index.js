@@ -1,4 +1,4 @@
-var computeRootSize = require('./computeRootSize.min')
+var computeRootSize = require('./computeRootSize')
 
 var FastClick = require('fastclick');
 FastClick.attach(document.body);
