@@ -11,15 +11,16 @@
  # xiaoweili@tencent.com
  # ps:请尽量第一时间运行此js计算字体
  */
-module.exports = function(win, option) {
+
+function computeRootSize(win, option) {
     var count = 0,
-        designWidth = option.designWidth,
-        designHeight = option.designHeight || 0,
-        designFontSize = option.designFontSize || 20,
-        callback = option.callback || null,
-        root = document.documentElement,
-        body = document.body,
-        rootWidth, newSize, t, self;
+      designWidth = option.designWidth,
+      designHeight = option.designHeight || 0,
+      designFontSize = option.designFontSize || 20,
+      callback = option.callback || null,
+      root = document.documentElement,
+      body = document.body,
+      rootWidth, newSize, t, self;
     root.style.width = "100%";
     //返回root元素字体计算结果
     function _getNewFontSize() {
@@ -28,12 +29,12 @@ module.exports = function(win, option) {
     }
     !function () {
         rootWidth = root.getBoundingClientRect().width;
-        self = self ? self : arguments.callee;
+        //self = self ? self : arguments.callee;
         //如果此时屏幕宽度不准确，就尝试再次获取分辨率，只尝试20次，否则使用win.innerWidth计算
         if( rootWidth !== win.innerWidth &&  count < 20 ) {
             win.setTimeout(function () {
                 count++;
-                self();
+                computeRootSize(win, option);
             }, 0);
         } else {
             newSize = _getNewFontSize();
@@ -48,7 +49,9 @@ module.exports = function(win, option) {
     win.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
         clearTimeout(t);
         t = setTimeout(function () {
-            self();
+            computeRootSize(win, option);
         }, 300);
     }, false);
-};
+}
+
+module.exports = computeRootSize
